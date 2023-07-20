@@ -17,11 +17,11 @@ public class InMemoryStudentRepository {
         DATABASE.add(new Student(4, "Sam", "Miller", "s.miller@gmail.com"));
     }
 
-    void addStudent(Student student) {
+    public void addStudent(Student student) {
         DATABASE.add(student);
     }
 
-    Student findById(Integer id) {
+    public Student findById(Integer id) {
         return DATABASE
                 .stream()
                 .filter(map -> id.equals(map.getId()))
@@ -32,12 +32,12 @@ public class InMemoryStudentRepository {
     }
 
     // Update student
-    void updateStudent(Student student) {
+    public void updateStudent(Student student) {
         DATABASE.set(DATABASE.indexOf(student), student);
     }
 
     // Delete student
-    Boolean deleteStudent(Integer id) {
+    public Boolean deleteStudent(Integer id) {
         Student toBeDeleted
                 = DATABASE
                 .stream()
