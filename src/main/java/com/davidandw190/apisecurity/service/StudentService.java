@@ -9,16 +9,13 @@ public interface StudentService {
     // Save a student
     void addStudent(Student student);
 
-    // Get students
-    List<Student> getAllStudents();
-
     // Get specific student
-    Student findById(Long id);
+    Student findById(Integer id);
 
     // Update student
     void updateStudent(Student student);
 
     // Delete student
-    void deleteStudent(Long id);
+    void deleteStudent(Integer id);
 
 }
