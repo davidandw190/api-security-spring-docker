@@ -17,8 +17,13 @@ public class InMemoryStudentRepository {
         DATABASE.add(new Student(4, "Sam", "Miller", "s.miller@gmail.com"));
     }
 
-    public void addStudent(Student student) {
+    public Student addStudent(Student student) {
         DATABASE.add(student);
+        return DATABASE.get(DATABASE.indexOf(student));
+    }
+
+    public List<Student> findAllStudents() {
+        return DATABASE;
     }
 
     public Student findById(Integer id) {
@@ -32,8 +37,9 @@ public class InMemoryStudentRepository {
     }
 
     // Update student
-    public void updateStudent(Student student) {
+    public Student updateStudent(Student student) {
         DATABASE.set(DATABASE.indexOf(student), student);
+        return DATABASE.get(DATABASE.indexOf(student));
     }
 
     // Delete student

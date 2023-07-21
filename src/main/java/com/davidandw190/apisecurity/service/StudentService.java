@@ -7,15 +7,17 @@ import java.util.List;
 public interface StudentService {
 
     // Save a student
-    void addStudent(Student student);
+    Student addStudent(Student student);
+
+    List<Student> getAllStudents();
 
     // Get specific student
     Student findById(Integer id);
 
     // Update student
-    void updateStudent(Student student);
+    Student updateStudent(Student student);
 
     // Delete student
-    void deleteStudent(Integer id);
+    Boolean deleteStudent(Integer id);
 
 }

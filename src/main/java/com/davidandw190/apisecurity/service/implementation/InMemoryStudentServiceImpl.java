@@ -6,6 +6,8 @@ import com.davidandw190.apisecurity.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class InMemoryStudentServiceImpl implements StudentService {
 
@@ -17,9 +19,13 @@ public class InMemoryStudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void addStudent(Student student) {
-        this.studentRepository.addStudent(student);
+    public Student addStudent(Student student) {
+        return this.studentRepository.addStudent(student);
+    }
 
+    @Override
+    public List<Student> getAllStudents() {
+        return this.studentRepository.findAllStudents();
     }
 
     @Override
@@ -28,12 +34,12 @@ public class InMemoryStudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void updateStudent(Student student) {
-        this.studentRepository.updateStudent(student);
+    public Student updateStudent(Student student) {
+        return this.studentRepository.updateStudent(student);
     }
 
     @Override
-    public void deleteStudent(Integer id) {
-        this.studentRepository.deleteStudent(id);
+    public Boolean deleteStudent(Integer id) {
+        return this.studentRepository.deleteStudent(id);
     }
 }
