@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InMemoryStudentServiceImpl implements StudentService {
@@ -29,8 +30,8 @@ public class InMemoryStudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student findById(Integer id) {
-        return this.studentRepository.findById(id);
+    public Optional<Student> findById(Integer id) {
+        return Optional.ofNullable(this.studentRepository.findById(id));
     }
 
     @Override

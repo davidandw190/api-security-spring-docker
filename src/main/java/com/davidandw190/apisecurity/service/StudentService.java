@@ -3,6 +3,7 @@ package com.davidandw190.apisecurity.service;
 import com.davidandw190.apisecurity.model.Student;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface StudentService {
 
@@ -12,7 +13,7 @@ public interface StudentService {
     List<Student> getAllStudents();
 
     // Get specific student
-    Student findById(Integer id);
+    Optional<Student> findById(Integer id);
 
     // Update student
     Student updateStudent(Student student);
