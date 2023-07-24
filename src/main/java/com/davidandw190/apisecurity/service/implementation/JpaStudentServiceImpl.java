@@ -4,12 +4,14 @@ import com.davidandw190.apisecurity.model.Student;
 import com.davidandw190.apisecurity.repository.JpaStudentRepository;
 import com.davidandw190.apisecurity.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Qualifier(value = "SQLService")
 public class JpaStudentServiceImpl implements StudentService {
 
     private final JpaStudentRepository studentRepository;

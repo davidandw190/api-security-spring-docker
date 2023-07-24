@@ -4,21 +4,24 @@ import com.davidandw190.apisecurity.model.Student;
 import com.davidandw190.apisecurity.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/students")
 public class StudentResource {
 
+
     private final StudentService studentService;
 
     @Autowired
-    public StudentResource(StudentService studentService) {
+    public StudentResource(@Qualifier(value = "SQLService")StudentService studentService) {
         this.studentService = studentService;
     }
 
@@ -28,7 +31,7 @@ public class StudentResource {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Student> getStudent(@PathVariable Integer id) {
+    public ResponseEntity<Optional<Student>> getStudent(@PathVariable Integer id) {
         return ResponseEntity.ok(studentService.findById(id));
     }
 
