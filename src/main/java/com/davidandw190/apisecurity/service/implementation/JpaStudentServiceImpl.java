@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,10 +15,10 @@ import java.util.Optional;
 @Qualifier(value = "SQLService")
 public class JpaStudentServiceImpl implements StudentService {
 
-    private final JpaStudentRepository studentRepository;
+    private final JpaStudentRepository<Principal, Number> studentRepository;
 
     @Autowired
-    public JpaStudentServiceImpl(JpaStudentRepository studentRepository) {
+    public JpaStudentServiceImpl(JpaStudentRepository<Principal, Number> studentRepository) {
         this.studentRepository = studentRepository;
     }
 
