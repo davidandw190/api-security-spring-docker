@@ -9,12 +9,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.security.Principal;
+
 @Entity
 @SuperBuilder
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
+public class Role implements Principal {
     @Id
     @GeneratedValue
     private Long id;
