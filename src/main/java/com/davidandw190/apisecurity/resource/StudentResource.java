@@ -37,7 +37,7 @@ public class StudentResource {
 
     @PostMapping
     public ResponseEntity<Student> addStudent(@RequestBody Student student) {
-        student.setId(studentService.getAllStudents().size() + 1);
+        // student.setId(studentService.getAllStudents().size() + 1); // only for in memory
         return ResponseEntity.created(getLocation(student.getId())).body(studentService.addStudent(student));
     }
 
