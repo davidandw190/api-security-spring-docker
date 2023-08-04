@@ -11,15 +11,18 @@ import lombok.experimental.SuperBuilder;
 
 import java.security.Principal;
 
-@Entity
-@SuperBuilder
-@Getter @Setter
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
-public class Role implements Principal {
+@NoArgsConstructor
+@Entity
+public class Role {
     @Id
     @GeneratedValue
     private Long id;
     private String code;
     private String name;
+
+    // Role - High level
+    // Permissions or authorities - more specific
 }
