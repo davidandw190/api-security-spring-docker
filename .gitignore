@@ -4,6 +4,17 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+
+# Ignore application.properties file
+/application.yml
+
+# Ignore .env file
+/.env
+
+/prod.env
+
+/*.env
+
 ### STS ###
 .apt_generated
 .classpath
@@ -31,3 +42,4 @@ build/
 
 ### VS Code ###
 .vscode/
+
