@@ -1,5 +1,6 @@
 package com.davidandw190.apisecurity.init;
 
+import com.davidandw190.apisecurity.enums.UserRole;
 import com.davidandw190.apisecurity.model.Role;
 import com.davidandw190.apisecurity.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class ApplicationStartRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Role roleUser = new Role(1L, "123689", "ROLE_USER");
-        Role roleAdmin = new Role(2L, "456542", "ROLE_ADMIN");
+        Role roleUser = new Role(UserRole.ROLE_USER);
+        Role roleAdmin = new Role(UserRole.ROLE_ADMIN);
 
         roleRepository.saveAll(Arrays.asList(roleUser, roleAdmin));
     }

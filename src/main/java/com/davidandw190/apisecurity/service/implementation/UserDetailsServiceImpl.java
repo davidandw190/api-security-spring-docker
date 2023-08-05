@@ -2,6 +2,7 @@ package com.davidandw190.apisecurity.service.implementation;
 
 import com.davidandw190.apisecurity.model.Account;
 import com.davidandw190.apisecurity.service.AccountService;
+import com.davidandw190.apisecurity.enums.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -35,7 +36,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         Collection<GrantedAuthority> authorities = account.getRoles().stream()
-                .map( role -> new SimpleGrantedAuthority(role.getName() )).collect(Collectors.toList());
+                .map(role -> new SimpleGrantedAuthority(role.getUserRole().name())) // Use the UserRole enum name
+                .collect(Collectors.toList());
 
         return new User(
                 account.getUsername(),

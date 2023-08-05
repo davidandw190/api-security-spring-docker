@@ -5,6 +5,7 @@ import com.davidandw190.apisecurity.repository.AccountRepository;
 import com.davidandw190.apisecurity.repository.RoleRepository;
 import com.davidandw190.apisecurity.service.AccountService;
 import com.davidandw190.apisecurity.model.Role;
+import com.davidandw190.apisecurity.enums.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.Set;
 
 @Service
 public class AccountServiceImpl implements AccountService {
-    private  final AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder encoder;
 
@@ -29,8 +30,8 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account createAccount(Account newAccount) {
         newAccount.setPassword(encoder.encode(newAccount.getPassword()));
-        Role role = roleRepository.findByName("ROLE_USER");
-        Set<com.davidandw190.apisecurity.model.Role>  newAccountRoles = new HashSet<>();
+        Role role = roleRepository.findByName(UserRole.ROLE_USER);
+        Set<Role> newAccountRoles = new HashSet<>();
         newAccountRoles.add(role);
         newAccount.setRoles(newAccountRoles);
         return accountRepository.save(newAccount);
