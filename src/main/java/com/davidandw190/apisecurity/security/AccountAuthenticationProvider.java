@@ -10,6 +10,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/**
+ * Custom authentication provider for user accounts.
+ */
 @Component
 public class AccountAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 

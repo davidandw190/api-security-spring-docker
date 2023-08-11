@@ -27,6 +27,12 @@ public class AccountServiceImpl implements AccountService {
         this.encoder = encoder;
     }
 
+    /**
+     * Creates a new user account.
+     *
+     * @param newAccount The account object representing the new user.
+     * @return The newly created user account.
+     */
     @Override
     public Account createAccount(Account newAccount) {
         newAccount.setPassword(encoder.encode(newAccount.getPassword()));
@@ -37,11 +43,22 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.save(newAccount);
     }
 
+    /**
+     * Finds an account by its holder username.
+     *
+     * @param username The username of the account to find.
+     * @return The account with the specified username, or null if not found.
+     */
     @Override
     public Account findByUsername(String username) {
         return accountRepository.findByUsername(username);
     }
 
+    /**
+     * Retrieves a list of all user accounts.
+     *
+     * @return A list containing all user accounts.
+     */
     @Override
     public List<Account> getAllAccounts() {
         return accountRepository.findAll();

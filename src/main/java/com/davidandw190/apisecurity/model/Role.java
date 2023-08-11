@@ -9,11 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@Getter @Setter
 public class Role {
     @Id
     @GeneratedValue
@@ -21,6 +18,8 @@ public class Role {
     private String code;
     private String name; // Update to String type
     private UserRole userRole; // Add UserRole enum field
+
+    public Role() {}
 
     public Role(UserRole role) {
         this.userRole = role;

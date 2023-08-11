@@ -3,6 +3,7 @@ package com.davidandw190.apisecurity.service.implementation;
 import com.davidandw190.apisecurity.model.Account;
 import com.davidandw190.apisecurity.service.AccountService;
 import com.davidandw190.apisecurity.enums.UserRole;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -19,10 +20,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final AccountService accountService;
 
+    @Autowired
     public UserDetailsServiceImpl(AccountService accountService) {
         this.accountService = accountService;
     }
 
+    /**
+     * Loads a user's details based on the provided username.
+     *
+     * @param username The username of the user whose details are to be loaded.
+     * @return UserDetails containing user information and authorities.
+     * @throws UsernameNotFoundException If the user with the given username is not found.
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountService.findByUsername(username);

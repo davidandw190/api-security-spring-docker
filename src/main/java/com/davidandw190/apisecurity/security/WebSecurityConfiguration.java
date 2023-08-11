@@ -1,6 +1,6 @@
 package com.davidandw190.apisecurity.security;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -14,13 +14,20 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.http.HttpMethod.POST;
 
+/**
+ * Configuration class for security settings.
+ */
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
 @EnableMethodSecurity
 public class WebSecurityConfiguration {
 
     private final AccountAuthenticationProvider authenticationProvider;
+
+    @Autowired
+    public WebSecurityConfiguration(AccountAuthenticationProvider authenticationProvider) {
+        this.authenticationProvider = authenticationProvider;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
