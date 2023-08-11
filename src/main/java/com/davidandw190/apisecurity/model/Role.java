@@ -4,9 +4,7 @@ import com.davidandw190.apisecurity.enums.UserRole;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -16,14 +14,14 @@ public class Role {
     @GeneratedValue
     private Long id;
     private String code;
-    private String name; // Update to String type
-    private UserRole userRole; // Add UserRole enum field
+    private String name;
+    private UserRole userRole;
 
     public Role() {}
 
     public Role(UserRole role) {
         this.userRole = role;
-        this.name = role.name(); // Set the name as the enum's name
+        this.name = role.name();
         this.code = role.getCode();
     }
 }

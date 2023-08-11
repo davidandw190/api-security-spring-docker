@@ -25,6 +25,13 @@ public class AccountAuthenticationProvider extends AbstractUserDetailsAuthentica
         this.encoder = encoder;
     }
 
+    /**
+     * Performs additional authentication checks beyond just verifying credentials.
+     *
+     * @param userDetails    The UserDetails object representing the user.
+     * @param authentication The authentication token containing user credentials.
+     * @throws AuthenticationException If the authentication checks fail.
+     */
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
         if (authentication.getCredentials() == null || userDetails.getPassword() == null) {
@@ -36,6 +43,14 @@ public class AccountAuthenticationProvider extends AbstractUserDetailsAuthentica
         }
     }
 
+    /**
+     * Retrieves the UserDetails object for the provided username during authentication.
+     *
+     * @param username       The username for which UserDetails is to be retrieved.
+     * @param authentication The authentication token containing user credentials.
+     * @return UserDetails object representing the user.
+     * @throws AuthenticationException If the UserDetails cannot be retrieved.
+     */
     @Override
     protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
         return userDetailsService.loadUserByUsername(username);
